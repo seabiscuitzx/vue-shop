@@ -43,8 +43,8 @@ export default {
        },
       // 用户登录表单数据对象(用户名、密码)
       loginForm: {
-        username: "",
-        userpass: ""
+        username: "admin",
+        userpass: "123456"
       }
     }
   },
