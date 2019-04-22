@@ -8,12 +8,12 @@
       <el-form ref="loginFormRef" :model="loginForm" :rules="loginFormRules">
         <el-form-item prop="username">
           <el-input v-model="loginForm.username">
-            <i slot="prefix" class="iconfont icon-denglu"></i>
+            <i slot="prefix" class="iconfont icon-user"></i>
           </el-input>
         </el-form-item>
         <el-form-item prop="username">
           <el-input v-model="loginForm.userpass">
-            <i slot="prefix" class="iconfont icon-ai-password"></i>
+            <i slot="prefix" class="iconfont icon-lock_fill"></i>
           </el-input>
         </el-form-item>
         <el-row>

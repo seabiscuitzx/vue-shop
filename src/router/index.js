@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import login from '../components/login.vue'
 import home from '../components/home.vue'
+import welcom from '../components/welcom.vue'
 
 Vue.use(Router)
 
@@ -10,7 +11,7 @@ var router = new Router({
   routes: [
     {
       path: '/',
-      redirect: '/login'
+      redirect: '/welcom'
     },
     {
       path:'/login',
@@ -18,8 +19,12 @@ var router = new Router({
     },
     {
       path:'/home',
-      component:home
-    }
+      component:home,
+      redirect:'/welcom',
+      children:[
+        { path:'/welcom',component:welcom }
+      ]
+    },
   ]
 })
 
