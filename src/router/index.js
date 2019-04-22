@@ -6,12 +6,11 @@ import home from '../components/home.vue'
 
 Vue.use(Router)
 
-export default new Router({
+var router = new Router({
   routes: [
     {
       path: '/',
-      name: '/login',
-      component: login
+      redirect: '/login'
     },
     {
       path:'/login',
@@ -23,3 +22,31 @@ export default new Router({
     }
   ]
 })
+
+//设置路由守卫
+router.beforeEach((to,from,next)=>{
+  //拿到token
+  var token = window.sessionStorage.getItem('token')
+  //判断登陆
+  if (token === null && to.path !== '/login') {
+    return next('/login')
+  }
+  next()
+})
+
+export default router
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
