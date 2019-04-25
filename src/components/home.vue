@@ -15,6 +15,7 @@
                 @click = "isshow = !isshow" 
                 :style = "{width:isshow?'65px':'200px'}">|||</div>
                 <el-menu
+                router
                 background-color="#333744"
                 text-color="#fff"
                 active-text-color="#ffd04b"
@@ -33,7 +34,7 @@
                             <el-menu-item 
                             v-for = "item2 in item.children"
                             :key = "item2.id"
-                            :index = "item.id+'-'+item2.id">
+                            :index = "item2.path">
                             <i class = "el-icon-menu"></i>
                             <span>{{item2.authName}}</span>
                             </el-menu-item>
@@ -65,7 +66,7 @@ export default {
         //发送axios
         async getMenuList () {
             const {data:dt} = await this.$http.get('/menus')
-            console.log(dt)
+            // console.log(dt)
             if (dt.meta.status!== 200) {
                 return this.$message.error(dt.meta.msg)
             }
