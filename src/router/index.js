@@ -5,6 +5,8 @@ import login from '../components/login.vue'
 import home from '../components/home.vue'
 import welcom from '../components/welcom.vue'
 import user from '../components/user.vue'
+import rights from '../components/rights.vue'
+import role from '../components/role.vue'
 
 Vue.use(Router)
 
@@ -26,6 +28,9 @@ var router = new Router({
       children:[
         { path:'/welcom',component:welcom },
         { path:'/users', component:user},
+         //权限管理路由设置
+        { path:'/rights', component:rights},
+        {path:'/roles',component:role}
       ]
     },
   ]

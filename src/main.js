@@ -3,6 +3,9 @@ import App from './App'
 import router from './router'
 import './assets/css/global.css'
 import './assets/fonts/iconfont.css'
+import crumb from'./components/crumb/crumb.vue'
+//全局注册面包屑
+Vue.component('com-crumb',crumb)
 // 引入axios
 import axios from 'axios'
 // axios配置请求公共根地址

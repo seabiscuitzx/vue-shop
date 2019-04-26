@@ -1,11 +1,7 @@
 <template>
   <div>
     <!--面包屑导航-->
-    <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item>用户管理</el-breadcrumb-item>
-      <el-breadcrumb-item>用户列表</el-breadcrumb-item>
-    </el-breadcrumb>
+   <com-crumb nm = "用户"/>
     <!--弹出添加对话框-->
     <el-dialog title="添加" :visible.sync="addUserDialog" width="60%" @close="resetForm()">
       <!--表单-->
@@ -115,6 +111,7 @@
 </template>
 <script>
 export default {
+  //钩子函数
   created() {
     this.getUserList();
   },
@@ -188,16 +185,18 @@ export default {
     add() {
       //在表单验证成功后发送axios
       this.$refs.addform.validate(async valid => {
-        const { data: dt } = await this.$http.post("users", this.addUser);
-        if (dt.meta.status !== 201) {
-          return this.$message.error(dt.meta.msg);
+        if (valid) {
+          const { data: dt } = await this.$http.post("users", this.addUser);
+          if (dt.meta.status !== 201) {
+            return this.$message.error(dt.meta.msg);
+          }
+          //关闭对话框
+          this.addUserDialog = false;
+          //刷新
+          this.getUserList();
+          //弹出确认框
+          this.$message.success(dt.meta.msg);
         }
-        //关闭对话框
-        this.addUserDialog = false;
-        //刷新
-        this.getUserList();
-        //弹出确认框
-        this.$message.success(dt.meta.msg);
       });
     },
     //搜索的方法
